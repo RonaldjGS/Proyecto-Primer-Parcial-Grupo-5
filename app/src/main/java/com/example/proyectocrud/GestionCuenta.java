@@ -43,7 +43,7 @@ public class GestionCuenta extends AppCompatActivity {
             public void onEditClick(CuentaBanco cuenta) {
                 // Redirigir a la actividad de editar cuenta
                 Intent intent = new Intent(GestionCuenta.this, EditarCuenta.class);
-                intent.putExtra("cuentaId", cuenta.getId());
+                intent.putExtra("cuentaId", Integer.parseInt(cuenta.getId()));
                 startActivity(intent);
             }
 
