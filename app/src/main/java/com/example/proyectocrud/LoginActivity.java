@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (db.checkUser(correo, password)) {
                     Toast.makeText(this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
                     // Redirigir a la pantalla principal
-                    Intent intent = new Intent(LoginActivity.this, GestionCuenta.class);
+                    Intent intent = new Intent(LoginActivity.this, Menu_principal.class);
                     startActivity(intent);
                     finish();
                 } else {
