@@ -117,7 +117,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         long result = db.insert(TABLE_CUENTAS, null, values);
         return result != -1;
     }
-    public boolean actualizarCuenta(int id, String nombres, String apellidos, int edad, String fechaNacimiento, String banco, Double saldo, String correo, String contraseña) {
+    public boolean actualizarCuenta(int id, String nombres, String apellidos, int edad, String fechaNacimiento, String banco, Double saldo, String correo, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COL_NOMBRES_CUENTA, nombres);
@@ -127,7 +127,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_BANCO_CUENTA, banco);
         values.put(COL_SALDO_CUENTA, saldo);
         values.put(COL_CORREO_CUENTA, correo);
-        values.put(COL_CORREO_CUENTA, contraseña);
+        values.put(COL_CORREO_CUENTA, password);
 
         int result = db.update(TABLE_CUENTAS, values, COL_ID_CUENTA + " = ?", new String[]{String.valueOf(id)});
         return result != -1;
