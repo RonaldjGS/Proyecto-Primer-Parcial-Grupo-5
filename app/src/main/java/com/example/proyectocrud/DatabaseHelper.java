@@ -9,8 +9,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "users.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String TABLE_USERS = "users";
+
 
     private static final String COL_ID = "id";
     private static final String COL_CEDULA = "cedula";
@@ -35,6 +36,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COL_BANCO_CUENTA = "banco";
     private static final String COL_CORREO_CUENTA = "correo";
     private static final String COL_PASSWORD_CUENTA = "password";
+
+
+    private static final String TABLE_CARDS = "cards"; // Nueva tabla para las tarjetas
+
+    // Columnas de la tabla de tarjetas
+    private static final String COL_CARD_ID = "card_id"; // ID de la tarjeta
+    private static final String COL_USER_ID = "user_id"; // Relación con la tabla de usuarios
+    private static final String COL_CARD_NUMBER = "card_number";
+    private static final String COL_CARD_TYPE = "card_type"; // Débito o Crédito
+    private static final String COL_EXPIRATION_DATE = "expiration_date";
+    private static final String COL_CARD_STATUS = "card_status"; // Activa, Bloqueada, etc.
+
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -67,6 +80,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COL_CORREO_CUENTA + " TEXT UNIQUE, " +
                 COL_PASSWORD_CUENTA + " TEXT)";
         db.execSQL(createCuentasTable);
+
+        // Crear tabla de tarjetas
+        String createCardsTable = "CREATE TABLE " + TABLE_CARDS + " (" +
+                COL_CARD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COL_USER_ID + " INTEGER, " +
+                COL_CARD_NUMBER + " TEXT, " +
+                COL_CARD_TYPE + " TEXT, " +
+                COL_EXPIRATION_DATE + " TEXT, " +
+                COL_CARD_STATUS + " TEXT, " +
+                "FOREIGN KEY(" + COL_USER_ID + ") REFERENCES " + TABLE_USERS + "(" + COL_ID + "))";
+        db.execSQL(createCardsTable);
     }
 
     @Override
@@ -154,4 +178,40 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    // Método para insertar una tarjeta
+    public boolean insertCard(int userId, String cardNumber, String cardType, String expirationDate, String cardStatus) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COL_USER_ID, userId);
+        values.put(COL_CARD_NUMBER, cardNumber);
+        values.put(COL_CARD_TYPE, cardType);
+        values.put(COL_EXPIRATION_DATE, expirationDate);
+        values.put(COL_CARD_STATUS, cardStatus);
+
+        long result = db.insert(TABLE_CARDS, null, values);
+        return result != -1;
+    }
+
+    // Método para obtener todas las tarjetas de un usuario
+    public Cursor getUserCards(int userId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE_CARDS + " WHERE " + COL_USER_ID + "=?";
+        return db.rawQuery(query, new String[]{String.valueOf(userId)});
+    }
+
+    // Método para actualizar el estado de una tarjeta
+    public boolean updateCardStatus(int cardId, String newStatus) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COL_CARD_STATUS, newStatus);
+        int result = db.update(TABLE_CARDS, values, COL_CARD_ID + "=?", new String[]{String.valueOf(cardId)});
+        return result > 0;
+    }
+
+    // Método para eliminar una tarjeta
+    public boolean deleteCard(int cardId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int result = db.delete(TABLE_CARDS, COL_CARD_ID + "=?", new String[]{String.valueOf(cardId)});
+        return result > 0;
+    }
 }
