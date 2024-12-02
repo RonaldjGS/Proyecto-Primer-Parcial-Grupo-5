@@ -35,6 +35,7 @@
             android:name=".CardManagementActivity"
             android:exported="true" />
 
+
         <activity
             android:name=".Menu_MBancario"
             android:exported="false" />

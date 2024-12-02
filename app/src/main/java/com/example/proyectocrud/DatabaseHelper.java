@@ -41,12 +41,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_CARDS = "cards"; // Nueva tabla para las tarjetas
 
     // Columnas de la tabla de tarjetas
-    private static final String COL_CARD_ID = "card_id"; // ID de la tarjeta
-    private static final String COL_USER_ID = "user_id"; // Relación con la tabla de usuarios
-    private static final String COL_CARD_NUMBER = "card_number";
-    private static final String COL_CARD_TYPE = "card_type"; // Débito o Crédito
-    private static final String COL_EXPIRATION_DATE = "expiration_date";
-    private static final String COL_CARD_STATUS = "card_status"; // Activa, Bloqueada, etc.
+    public static final String COL_CARD_ID = "card_id"; // ID de la tarjeta
+    public static final String COL_USER_ID = "user_id"; // Relación con la tabla de usuarios
+    public static final String COL_CARD_NUMBER = "card_number";
+    public static final String COL_CARD_TYPE = "card_type"; // Débito o Crédito
+    public static final String COL_EXPIRATION_DATE = "expiration_date";
+    public static final String COL_CARD_STATUS = "card_status"; // Activa, Bloqueada, etc.
 
 
     public DatabaseHelper(Context context) {
@@ -214,4 +214,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         int result = db.delete(TABLE_CARDS, COL_CARD_ID + "=?", new String[]{String.valueOf(cardId)});
         return result > 0;
     }
+
 }

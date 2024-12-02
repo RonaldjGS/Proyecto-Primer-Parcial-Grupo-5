@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:layout_marginBottom="8dp"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true">
+
+    <TextView
+        android:id="@+id/txtCardNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Número de tarjeta"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtCardType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tipo de tarjeta" />
+
+    <TextView
+        android:id="@+id/txtExpirationDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fecha de expiración" />
+
+    <TextView
+        android:id="@+id/txtCardStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Estado de la tarjeta" />
+
+    <!-- Botón para eliminar tarjeta -->
+    <Button
+        android:id="@+id/btnDeleteCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Eliminar" />
+</LinearLayout>
+
