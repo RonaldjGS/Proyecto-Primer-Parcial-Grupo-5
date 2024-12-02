@@ -29,7 +29,7 @@ public class Menu_MBancario extends AppCompatActivity {
         TextView txtAgregarCuenta = findViewById(R.id.txtAgregarCuenta);
         txtAgregarCuenta.setOnClickListener(view -> { // Inicia la actividad AgregarCuentaBanco
 
-            Intent intent = new Intent(Menu_MBancario.this, AgregarCuentaBanco.class);
+            Intent intent = new Intent(Menu_MBancario.this, GestionCuenta.class);
             startActivity(intent);
         });
 

@@ -39,13 +39,11 @@ public class Menu_principal extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId()== R.id.MBancario) {
-            Intent intent = new Intent(this, Menu_MBancario.class);
+            Intent intent = new Intent(this, GestionCuenta.class);
             startActivity(intent);
             return  true;
         }
         return true;
     }
-
-
 
 }
