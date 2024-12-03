@@ -43,6 +43,11 @@ public class Menu_principal extends AppCompatActivity {
             startActivity(intent);
             return  true;
         }
+        if (item.getItemId()== R.id.MCrediticio) {
+            Intent intent = new Intent(this, Menu_ModuloCrediticio.class);
+            startActivity(intent);
+            return  true;
+        }
         return true;
     }
 

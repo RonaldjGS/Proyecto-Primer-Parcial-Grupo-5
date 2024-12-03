@@ -20,6 +20,10 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        // Ocultar la ActionBar en la pantalla de login
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         db = new DatabaseHelper(this);
 
         etCedula = findViewById(R.id.etCedula);

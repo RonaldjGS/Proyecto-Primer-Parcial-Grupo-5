@@ -1,6 +1,7 @@
 package com.example.proyectocrud;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,8 +19,13 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
+        // Ocultar la ActionBar en la pantalla de login
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         Button btnLogin = findViewById(R.id.btnLogin);
         Button btnRegister = findViewById(R.id.btnRegister);
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -43,4 +49,8 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
     }
+
+
+
+
 }

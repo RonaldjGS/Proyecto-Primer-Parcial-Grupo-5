@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "users.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 3;
     private static final String TABLE_USERS = "users";
 
     private static final String COL_ID = "id";
@@ -35,6 +35,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COL_BANCO_CUENTA = "banco";
     private static final String COL_CORREO_CUENTA = "correo";
     private static final String COL_PASSWORD_CUENTA = "password";
+
+    // Tabla Créditos
+    public static final String TABLE_CREDITOS = "creditos";
+    public static final String COL_ID_CREDITOS = "id";
+    public static final String COL_MONTO = "monto";
+    public static final String COL_TASA_INTERES = "tasa_interes";
+    public static final String COL_PLAZO = "plazo";
+    public static final String COL_CLIENTE = "cliente";
+
+    // Tabla de pagos
+    public static final String TABLE_PAGOS = "pagos";
+    public static final String COL_ID_PAGO = "id";
+    public static final String COL_ID_CREDITO = "credito_id";
+    public static final String COL_MONTO_PAGO = "monto_pago";
+    public static final String COL_FECHA_PAGO = "fecha_pago";
+    public static final String COL_OBSERVACION = "observacion";
+
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -67,6 +84,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COL_CORREO_CUENTA + " TEXT UNIQUE, " +
                 COL_PASSWORD_CUENTA + " TEXT)";
         db.execSQL(createCuentasTable);
+
+
+        String createCreditosTable = "CREATE TABLE " + TABLE_CREDITOS + " (" +
+                COL_ID_CREDITOS + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COL_MONTO + " DOUBLE NOT NULL, " +
+                COL_TASA_INTERES + " DOUBLE NOT NULL, " +
+                COL_PLAZO + " INTEGER NOT NULL, " +
+                COL_CLIENTE + " TEXT)";
+        db.execSQL(createCreditosTable);
+
+        // Tabla de pagos
+        String createTablePagos = "CREATE TABLE " + TABLE_PAGOS + " (" +
+                COL_ID_PAGO + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COL_ID_CREDITO + " INTEGER NOT NULL, " +
+                COL_MONTO_PAGO + " DOUBLE NOT NULL, " +
+                COL_FECHA_PAGO + " TEXT NOT NULL, " +
+                COL_OBSERVACION + " TEXT, " +
+                "FOREIGN KEY(" + COL_ID_CREDITO + ") REFERENCES " + TABLE_CREDITOS + "(" + COL_ID_CREDITOS + "))";
+        db.execSQL(createTablePagos);
+
     }
 
     @Override

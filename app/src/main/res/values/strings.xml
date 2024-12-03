@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">ProyectoCrud</string>
+    <!-- Título de la pantalla Historial de Pagos -->
+    <string name="historial_pagos">Historial de Pagos</string>
+
+    <!-- Descripción para el ScrollView (accesibilidad) -->
+    <string name="scroll_view_description">Desplazamiento de pagos</string>
 </resources>

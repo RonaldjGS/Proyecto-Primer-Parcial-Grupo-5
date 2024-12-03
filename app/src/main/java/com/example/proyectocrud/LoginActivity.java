@@ -18,6 +18,10 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        // Ocultar la ActionBar en la pantalla de login
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         db = new DatabaseHelper(this);
 
         etCorreoLogin = findViewById(R.id.etCorreoLogin);
