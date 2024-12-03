@@ -199,14 +199,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return db.rawQuery(query, new String[]{String.valueOf(userId)});
     }
 
-    // Método para actualizar el estado de una tarjeta
     public boolean updateCardStatus(int cardId, String newStatus) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COL_CARD_STATUS, newStatus);
+        values.put(COL_CARD_STATUS, newStatus); // Aquí se guarda el nuevo estado
         int result = db.update(TABLE_CARDS, values, COL_CARD_ID + "=?", new String[]{String.valueOf(cardId)});
-        return result > 0;
+        return result > 0; // Si se actualizó al menos una fila, el resultado es verdadero
     }
+
+
 
     // Eliminar por ID
     public boolean deleteCardById(int cardId) {

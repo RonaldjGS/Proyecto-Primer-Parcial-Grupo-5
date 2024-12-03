@@ -67,6 +67,8 @@ public class CardManagementActivity extends AppCompatActivity {
                 Toast.makeText(CardManagementActivity.this, "Por favor complete todos los campos", Toast.LENGTH_SHORT).show();
             }
         });
+
+
     }
 
     // Método para cargar las tarjetas desde la base de datos
@@ -74,24 +76,29 @@ public class CardManagementActivity extends AppCompatActivity {
         cardList.clear(); // Limpiar la lista actual
         Cursor cursor = dbHelper.getUserCards(userId);
         if (cursor != null && cursor.moveToFirst()) {
+            int cardIdIndex = cursor.getColumnIndex(DatabaseHelper.COL_CARD_ID); // Asegúrate de tener este índice
             int cardNumberIndex = cursor.getColumnIndex(DatabaseHelper.COL_CARD_NUMBER);
             int cardTypeIndex = cursor.getColumnIndex(DatabaseHelper.COL_CARD_TYPE);
             int expirationDateIndex = cursor.getColumnIndex(DatabaseHelper.COL_EXPIRATION_DATE);
             int cardStatusIndex = cursor.getColumnIndex(DatabaseHelper.COL_CARD_STATUS);
 
             // Verificar si los índices son válidos
-            if (cardNumberIndex != -1 && cardTypeIndex != -1 && expirationDateIndex != -1 && cardStatusIndex != -1) {
+            if (cardIdIndex != -1 && cardNumberIndex != -1 && cardTypeIndex != -1 && expirationDateIndex != -1 && cardStatusIndex != -1) {
                 do {
+                    int cardId = cursor.getInt(cardIdIndex); // Obtén el cardId
                     String cardNumber = cursor.getString(cardNumberIndex);
                     String cardType = cursor.getString(cardTypeIndex);
                     String expirationDate = cursor.getString(expirationDateIndex);
                     String cardStatus = cursor.getString(cardStatusIndex);
 
-                    cardList.add(new Card(cardNumber, cardType, expirationDate, cardStatus));
+                    cardList.add(new Card(cardId, cardNumber, cardType, expirationDate, cardStatus)); // Pasa cardId al constructor
                 } while (cursor.moveToNext());
             }
             cursor.close();
         }
         cardAdapter.notifyDataSetChanged(); // Notificar al adaptador para actualizar la vista
     }
+
+
+
 }
