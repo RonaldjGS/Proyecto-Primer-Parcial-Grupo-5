@@ -42,6 +42,11 @@ public class Menu_principal extends AppCompatActivity {
             Intent intent = new Intent(this, GestionCuenta.class);
             startActivity(intent);
             return  true;
+
+        } else if (item.getItemId()== R.id.CardManagementActivity) {
+            Intent intent = new Intent(this, CardManagementActivity.class);
+            startActivity(intent);
+            return  true;
         }
         if (item.getItemId()== R.id.MCrediticio) {
             Intent intent = new Intent(this, Menu_ModuloCrediticio.class);

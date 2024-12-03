@@ -43,6 +43,10 @@
             android:name=".Menu_principal"
             android:exported="true" />
         <activity
+            android:name=".CardManagementActivity"
+            android:exported="true" />
+
+        <activity
             android:name=".Menu_MBancario"
             android:exported="false" />
         <activity

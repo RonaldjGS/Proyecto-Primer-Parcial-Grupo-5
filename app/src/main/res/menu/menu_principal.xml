@@ -10,6 +10,6 @@
         android:id="@+id/MPrestamosHipotecas"
         android:title="Prestamos e Hipotecas" />
     <item
-        android:id="@+id/MGestionTarjetas"
+        android:id="@+id/CardManagementActivity"
         android:title="Gestion de Tarjetas" />
 </menu>
