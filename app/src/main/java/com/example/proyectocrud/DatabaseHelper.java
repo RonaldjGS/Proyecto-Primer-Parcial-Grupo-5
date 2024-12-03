@@ -208,11 +208,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result > 0;
     }
 
-    // Método para eliminar una tarjeta
-    public boolean deleteCard(int cardId) {
+    // Eliminar por ID
+    public boolean deleteCardById(int cardId) {
         SQLiteDatabase db = this.getWritableDatabase();
         int result = db.delete(TABLE_CARDS, COL_CARD_ID + "=?", new String[]{String.valueOf(cardId)});
         return result > 0;
     }
+
+    // Eliminar por número de tarjeta
+    public boolean deleteCardByNumber(String cardNumber) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int result = db.delete(TABLE_CARDS, COL_CARD_NUMBER + "=?", new String[]{cardNumber});
+        return result > 0;
+    }
+
 
 }

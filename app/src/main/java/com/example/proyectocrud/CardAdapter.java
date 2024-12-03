@@ -4,7 +4,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,6 +39,21 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
         holder.txtCardType.setText(card.getCardType());
         holder.txtExpirationDate.setText(card.getExpirationDate());
         holder.txtCardStatus.setText(card.getCardStatus());
+
+        // Configurar botón de eliminar
+        holder.btnDeleteCard.setOnClickListener(view -> {
+            String cardNumber = card.getCardNumber(); // Obtén el número desde el objeto Card
+            boolean isDeleted = dbHelper.deleteCardByNumber(cardNumber);
+            if (isDeleted) {
+                Toast.makeText(view.getContext(), "Tarjeta eliminada", Toast.LENGTH_SHORT).show();
+                // Actualiza la lista
+                int adapterPosition = holder.getAdapterPosition(); // Obtén la posición del holder
+                cardList.remove(adapterPosition);
+                notifyItemRemoved(adapterPosition);
+            } else {
+                Toast.makeText(view.getContext(), "Error al eliminar la tarjeta", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -46,6 +63,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
 
     public static class CardViewHolder extends RecyclerView.ViewHolder {
         TextView txtCardNumber, txtCardType, txtExpirationDate, txtCardStatus;
+        Button btnDeleteCard;
 
         public CardViewHolder(View itemView) {
             super(itemView);
@@ -53,7 +71,10 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
             txtCardType = itemView.findViewById(R.id.txtCardType);
             txtExpirationDate = itemView.findViewById(R.id.txtExpirationDate);
             txtCardStatus = itemView.findViewById(R.id.txtCardStatus);
+            btnDeleteCard = itemView.findViewById(R.id.btnDeleteCard);
         }
     }
-}
 
+
+
+}
