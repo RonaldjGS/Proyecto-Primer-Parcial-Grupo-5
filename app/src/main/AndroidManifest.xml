@@ -13,6 +13,18 @@
         android:theme="@style/Theme.ProyectoCrud"
         tools:targetApi="31">
         <activity
+            android:name=".VerPrestamos"
+            android:exported="false" />
+        <activity
+            android:name=".RegistrarPrestamo"
+            android:exported="false" />
+        <activity
+            android:name=".Menu_MPrestamosHipotecas"
+            android:exported="false" />
+        <activity
+            android:name=".ListaPrestamo"
+            android:exported="false" />
+        <activity
             android:name=".RegistrarPagoMC"
             android:exported="false" />
         <activity
@@ -45,7 +57,6 @@
         <activity
             android:name=".CardManagementActivity"
             android:exported="true" />
-
         <activity
             android:name=".Menu_MBancario"
             android:exported="false" />

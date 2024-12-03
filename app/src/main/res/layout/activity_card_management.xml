@@ -1,39 +1,54 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="#FFFFFF"> <!-- Fondo blanco -->
 
-    <!-- EditText para el número de tarjeta -->
+    <!-- Campos para agregar tarjeta -->
     <EditText
         android:id="@+id/edtCardNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Número de tarjeta"
-        android:inputType="text"/>
+        android:inputType="text" />
 
-    <!-- EditText para el tipo de tarjeta (Débito o Crédito) -->
     <EditText
         android:id="@+id/edtCardType"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Tipo de tarjeta"
-        android:inputType="text"/>
+        android:inputType="text" />
 
-    <!-- EditText para la fecha de expiración -->
     <EditText
         android:id="@+id/edtExpirationDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Fecha de expiración"
-        android:inputType="date"/>
+        android:inputType="date" />
 
-    <!-- Botón para agregar tarjeta -->
     <Button
         android:id="@+id/btnAddCard"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Agregar tarjeta"/>
+        android:text="Agregar tarjeta"
+        android:backgroundTint="#6200EE"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="16dp" />
 
+    <!-- Contenedor para mostrar tarjetas registradas -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/linearLayoutCards"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:background="#FFFFFF" /> <!-- Fondo blanco del contenedor -->
+    </ScrollView>
 </LinearLayout>

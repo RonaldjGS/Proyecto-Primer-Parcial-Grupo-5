@@ -53,6 +53,13 @@ public class Menu_principal extends AppCompatActivity {
             startActivity(intent);
             return  true;
         }
+        if (item.getItemId()== R.id.MPrestamosHipotecas) {
+            Intent intent = new Intent(this, Menu_MPrestamosHipotecas.class);
+            startActivity(intent);
+            return  true;
+        }
+
+
         return true;
     }
 

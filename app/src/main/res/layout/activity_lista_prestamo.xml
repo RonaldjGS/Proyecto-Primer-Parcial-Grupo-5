@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ListaPrestamo">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/contenedorPrestamos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Ejemplo de una fila (se replicará dinámicamente desde el código) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:background="@android:color/white"
+                android:layout_marginBottom="8dp"
+                android:elevation="4dp">
+
+                <!-- Cantidad -->
+                <TextView
+                    android:id="@+id/tvCantidad"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Cantidad"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:padding="4dp" />
+
+                <!-- Tasa -->
+                <TextView
+                    android:id="@+id/tvTasa"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Tasa"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:padding="4dp" />
+
+                <!-- Tiempo -->
+                <TextView
+                    android:id="@+id/tvTiempo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Tiempo"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:padding="4dp" />
+
+                <!-- Botones -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <!-- Botón Editar -->
+                    <Button
+                        android:id="@+id/btnEditar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:text="Editar"
+                        android:textSize="12sp"
+                        android:backgroundTint="@color/blue"
+                        android:textColor="@android:color/white" />
+
+                    <!-- Botón Eliminar -->
+                    <Button
+                        android:id="@+id/btnEliminar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Eliminar"
+                        android:textSize="12sp"
+                        android:backgroundTint="@color/red"
+                        android:textColor="@android:color/white" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
