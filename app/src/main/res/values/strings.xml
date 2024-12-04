@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">FinBank</string>
+    <!-- Título de la pantalla Historial de Pagos -->
+    <string name="historial_pagos">Historial de Pagos</string>
+
+    <!-- Descripción para el ScrollView (accesibilidad) -->
+    <string name="scroll_view_description">Desplazamiento de pagos</string>
+
+    <string-array name="tiposPrestamos">
+        <item>Prestamo personal</item>
+        <item>Prestamo comercial</item>
+        <item>Prestamo hipotecario</item>
+    </string-array>
+
+
+</resources>

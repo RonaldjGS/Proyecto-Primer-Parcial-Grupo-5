@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ProyectoCrud"
+        tools:targetApi="31">
+        <activity
+            android:name=".VerPrestamos"
+            android:exported="false" />
+        <activity
+            android:name=".RegistrarPrestamo"
+            android:exported="false" />
+        <activity
+            android:name=".Menu_MPrestamosHipotecas"
+            android:exported="false" />
+        <activity
+            android:name=".ListaPrestamo"
+            android:exported="false" />
+        <activity
+            android:name=".RegistrarPagoMC"
+            android:exported="false" />
+        <activity
+            android:name=".HistorialPagos"
+            android:exported="false" />
+        <activity
+            android:name=".ListadoCreditos"
+            android:exported="false" />
+        <activity
+            android:name=".AgregarCredito"
+            android:exported="false" />
+        <activity
+            android:name=".Menu_ModuloCrediticio"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Menu_principal"
+            android:exported="true" />
+        <activity
+            android:name=".CardManagementActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Menu_MBancario"
+            android:exported="false" />
+        <activity
+            android:name=".EditarCuenta"
+            android:exported="false" />
+        <activity
+            android:name=".AgregarCuentaBanco"
+            android:exported="false" />
+        <activity
+            android:name=".GestionCuenta"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true">
+
+            <!-- Quitamos el intent-filter para evitar conflictos -->
+        </activity>
+    </application>
+
+</manifest>
